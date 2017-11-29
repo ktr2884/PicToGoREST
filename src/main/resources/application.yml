@@ -1,0 +1,12 @@
+server:
+  port: 8080
+spring:
+  datasource:
+    url: jdbc:sqlite:meta.db
+    driverClassName: org.sqlite.JDBC
+    user:
+    password:
+  jpa:
+    database-platform: org.hibernate.dialect.SQLiteDialect
+    hibernate:
+      ddl-auto: update
