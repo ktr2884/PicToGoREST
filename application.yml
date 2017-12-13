@@ -10,3 +10,10 @@ spring:
     database-platform: org.hibernate.dialect.SQLiteDialect
     hibernate:
       ddl-auto: update
+  http:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
+image:
+  compression:
+    finalWidth: 2000

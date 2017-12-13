@@ -1,6 +1,8 @@
 package at.fhv.itm16.pictogo.rest;
 
 
+import at.fhv.itm16.pictogo.rest.storage.StorageService;
+import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
@@ -12,6 +14,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 
 @Controller
+@Api(value = "Image-Upload", description = "upload image and resize it")
 public class ImageUploadController {
 
     private final StorageService storageService;

@@ -1,6 +1,11 @@
-package at.fhv.itm16.pictogo.rest;
+package at.fhv.itm16.pictogo.rest.storage;
 
+import ij.IJ;
+import ij.ImagePlus;
+import ij.io.FileSaver;
+import ij.process.ImageProcessor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
 import org.springframework.stereotype.Service;
@@ -20,6 +25,8 @@ import java.util.stream.Stream;
 public class FileSystemStorageService implements StorageService {
 
     private final Path rootLocation;
+    @Value("${image.compression.finalWidth}")
+    private int finalWidth;
 
     @Autowired
     public FileSystemStorageService() {
@@ -28,7 +35,11 @@ public class FileSystemStorageService implements StorageService {
 
     @Override
     public String store(MultipartFile file) {
-        String filename = StringUtils.cleanPath(file.getOriginalFilename());
+        String fileExtension = StringUtils.getFilenameExtension(file.getOriginalFilename()).toLowerCase();
+        if (!fileExtension.equals("jpg")) {
+            throw new StorageException("only jpg is allowed as extension, but got " + fileExtension);
+        }
+        String filename = String.valueOf(System.nanoTime()) + "." + fileExtension;
         try {
             if (file.isEmpty()) {
                 throw new StorageException("Failed to store empty file " + filename);
@@ -44,7 +55,18 @@ public class FileSystemStorageService implements StorageService {
         } catch (IOException e) {
             throw new StorageException("Failed to store file " + filename, e);
         }
+
+        compressImage(this.rootLocation.resolve(filename).toString());
+
         return filename;
+    }
+
+    private void compressImage(String filename) {
+        ImagePlus imp = IJ.openImage(filename);
+        ImageProcessor ip = imp.getProcessor();
+        imp.setProcessor(ip.resize(finalWidth));
+        FileSaver fileSaver = new FileSaver(imp);
+        fileSaver.saveAsJpeg(filename);
     }
 
     @Override

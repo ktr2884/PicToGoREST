@@ -1,4 +1,4 @@
-package at.fhv.itm16.pictogo.rest;
+package at.fhv.itm16.pictogo.rest.storage;
 
 public class StorageFileNotFoundException extends StorageException {
 

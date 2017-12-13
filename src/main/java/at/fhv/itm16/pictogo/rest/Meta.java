@@ -1,5 +1,7 @@
 package at.fhv.itm16.pictogo.rest;
 
+import io.swagger.annotations.ApiModelProperty;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,6 +16,7 @@ public class Meta {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
+    @ApiModelProperty(notes = "The database generated product ID")
     private String userId;
     private Date created;
     private boolean isActive;

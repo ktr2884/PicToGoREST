@@ -1,4 +1,4 @@
-package at.fhv.itm16.pictogo.rest;
+package at.fhv.itm16.pictogo.rest.storage;
 
 import org.springframework.core.io.Resource;
 import org.springframework.web.multipart.MultipartFile;
