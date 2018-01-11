@@ -18,3 +18,4 @@ Can be found in ```http://host:port/swagger-ui.html```, for example when running
 - [Spring File Upload](https://spring.io/guides/gs/uploading-files/)
 - [ImageJ](https://imagej.net/Welcome)
 - [Swagger for Spring](https://dzone.com/articles/spring-boot-restful-api-documentation-with-swagger)
+- [Thymeleaf Spring](https://spring.io/guides/gs/serving-web-content/)
