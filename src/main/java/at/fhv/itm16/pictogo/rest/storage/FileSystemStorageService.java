@@ -31,6 +31,11 @@ public class FileSystemStorageService implements StorageService {
     @Autowired
     public FileSystemStorageService() {
         this.rootLocation = Paths.get("images");
+        try {
+            Files.createDirectories(this.rootLocation);
+        } catch (IOException e) {
+            throw new StorageException("Could not create images folder: " + this.rootLocation, e);
+        }
     }
 
     @Override
