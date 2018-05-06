@@ -22,7 +22,7 @@ public class ImageUploadController {
         this.storageService = storageService;
     }
 
-    @GetMapping("/image/{fileURI:.+}")
+    @GetMapping("/images/{fileURI:.+}")
     @ResponseBody
     public ResponseEntity<Resource> serveFile(@PathVariable String fileURI) {
         Resource file = storageService.loadAsResource(fileURI);
@@ -30,7 +30,7 @@ public class ImageUploadController {
                 "attachment; filename=\"" + file.getFilename() + "\"").body(file);
     }
 
-    @PostMapping("/image")
+    @PostMapping("/images")
     public ResponseEntity<String> handleFileUpload(@RequestParam("file") MultipartFile file) {
 
         String filename = storageService.store(file);

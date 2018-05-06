@@ -22,6 +22,12 @@ public class Meta {
     private boolean isActive;
     private String tag;
     private String imageURI;
+    private String theme;
+
+    public String getTheme() { return theme; }
+
+    public void setTheme(String theme) { this.theme = theme; }
+
 
     public long getId() {
         return id;
