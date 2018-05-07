@@ -2,16 +2,14 @@ package at.fhv.itm16.pictogo.rest;
 
 import io.swagger.annotations.ApiModelProperty;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Date;
 
 /**
  * Created by Karin on 29.11.2017.
  */
 @Entity
+@Table(name = "meta")
 public class Meta {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -19,7 +17,7 @@ public class Meta {
     @ApiModelProperty(notes = "The database generated product ID")
     private String userId;
     private Date created;
-    private boolean isActive;
+    private Boolean isActive;
     private String tag;
     private String imageURI;
     private String theme;

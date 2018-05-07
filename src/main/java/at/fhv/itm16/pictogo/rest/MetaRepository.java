@@ -14,4 +14,5 @@ import java.util.List;
 public interface MetaRepository extends PagingAndSortingRepository<Meta, Long> {
     List<Meta> findByTheme(@Param("theme") String theme);
     List<Meta> findByUserId (@Param("userId") String userId);
+    List<Meta> findByIsActive(@Param("isActive") Boolean isActive);
 }
