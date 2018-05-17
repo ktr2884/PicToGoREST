@@ -4,10 +4,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Predicate;
-import javax.persistence.criteria.Root;
+import javax.persistence.criteria.*;
 import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
@@ -19,19 +16,18 @@ public class ThemeRepositoryImpl implements ThemeRepositoryCustom {
     EntityManager entityManager;
 
     @Override
-    public List<Theme> findByTargetDate(LocalDate targetDateOfTheme) {
+    public List<Theme> findByTargetDate(Date targetDateOfTheme) {
         final CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
         final CriteriaQuery<Theme> criteriaQuery = criteriaBuilder.createQuery(Theme.class);
 
         final Root<Theme> themeRoot = criteriaQuery.from(Theme.class);
-
-        final Predicate isBeforeEndDate = criteriaBuilder.lessThanOrEqualTo(
-            themeRoot.<LocalDate>get("endDateOfTheme"),
+        final Predicate isBeforeEndDate = criteriaBuilder.greaterThan(
+            themeRoot.get(Theme_.endDateOfTheme),
             targetDateOfTheme
         );
 
-        final Predicate isAfterStartDate = criteriaBuilder.greaterThan(
-            themeRoot.<LocalDate>get("startDateOfTheme"),
+        final Predicate isAfterStartDate = criteriaBuilder.lessThanOrEqualTo(
+            themeRoot.get(Theme_.startDateOfTheme),
             targetDateOfTheme
         );
 
@@ -40,8 +36,7 @@ public class ThemeRepositoryImpl implements ThemeRepositoryCustom {
             isBeforeEndDate
         );
 
-        criteriaQuery.select(themeRoot);
-        final CriteriaQuery<Theme> preparedQuery = criteriaQuery.where(isInRange).distinct(true);
+        final CriteriaQuery<Theme> preparedQuery = criteriaQuery.select(themeRoot).where(isInRange).distinct(true);
         return entityManager.createQuery(preparedQuery).getResultList();
     }
 }

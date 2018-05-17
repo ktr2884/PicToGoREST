@@ -4,8 +4,9 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>at.fhv.itm16.pictogo</groupId>
-    <artifactId>rest</artifactId>
-    <version>2.0.0</version>
+    <artifactId>pictogo_rest_server</artifactId>
+    <name>PicToGoREST</name>
+    <version>3.0.0</version>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -15,6 +16,7 @@
 
     <properties>
         <java.version>1.8</java.version>
+        <springfox-swagger-version>2.7.0</springfox-swagger-version>
     </properties>
 
     <dependencies>
@@ -48,24 +50,30 @@
         <dependency>
             <groupId>io.springfox</groupId>
             <artifactId>springfox-swagger2</artifactId>
-            <version>2.7.0</version>
+            <version>${springfox-swagger-version}</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>io.springfox</groupId>
             <artifactId>springfox-swagger-ui</artifactId>
-            <version>2.7.0</version>
+            <version>${springfox-swagger-version}</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>io.springfox</groupId>
             <artifactId>springfox-data-rest</artifactId>
-            <version>2.7.0</version>
+            <version>${springfox-swagger-version}</version>
         </dependency>
         <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-thymeleaf -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-jpamodelgen</artifactId>
+            <version>5.3.0.Final</version>
         </dependency>
     </dependencies>
 
@@ -74,6 +82,14 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <compilerArguments>
+                        <processor>org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor</processor>
+                    </compilerArguments>
+                </configuration>
             </plugin>
         </plugins>
     </build>

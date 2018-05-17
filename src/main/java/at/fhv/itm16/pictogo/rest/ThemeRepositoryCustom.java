@@ -8,6 +8,6 @@ import java.util.Date;
 import java.util.List;
 
 public interface ThemeRepositoryCustom {
-    List<Theme> findByTargetDate(@Param("targetDate") LocalDate targetDateOfTheme);
+    List<Theme> findByTargetDate(@Param("targetDate") Date targetDateOfTheme);
 }
 

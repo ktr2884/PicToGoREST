@@ -24,7 +24,7 @@ public class ThemeController {
     @ApiOperation(value = "find themes, if targetDate is between start and end date", notes= "Date Format= 'yyyy-MM-dd'")
     public List<Theme> findByTargetDate(
         @RequestParam("targetDate")
-        @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)LocalDate targetDateOfTheme
+        @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)Date targetDateOfTheme
     ) {
         return themeRepository.findByTargetDate(targetDateOfTheme);
     }

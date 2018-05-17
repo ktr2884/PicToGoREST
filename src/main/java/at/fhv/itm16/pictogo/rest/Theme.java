@@ -1,9 +1,7 @@
 package at.fhv.itm16.pictogo.rest;
 
-import io.swagger.annotations.ApiModelProperty;
-
 import javax.persistence.*;
-import java.time.LocalDate;
+import java.util.Date;
 
 @Entity
 @Table(name="theme")
@@ -12,8 +10,8 @@ public class Theme {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     private String themeItem;
-    private LocalDate startDateOfTheme;
-    private LocalDate endDateOfTheme;
+    private Date startDateOfTheme;
+    private Date endDateOfTheme;
 
     public String getThemeItem() {
         return themeItem;
@@ -23,11 +21,11 @@ public class Theme {
         this.themeItem = themeItem;
     }
 
-    public LocalDate getStartDateOfTheme() { return startDateOfTheme; }
+    public Date getStartDateOfTheme() { return startDateOfTheme; }
 
-    public void setStartDateOfTheme(LocalDate startDateOfTheme) { this.startDateOfTheme = startDateOfTheme; }
+    public void setStartDateOfTheme(Date startDateOfTheme) { this.startDateOfTheme = startDateOfTheme; }
 
-    public LocalDate getEndDateOfTheme() { return endDateOfTheme; }
+    public Date getEndDateOfTheme() { return endDateOfTheme; }
 
-    public void setEndDateOfTheme(LocalDate endDateOfTheme) { this.endDateOfTheme = endDateOfTheme; }
+    public void setEndDateOfTheme(Date endDateOfTheme) { this.endDateOfTheme = endDateOfTheme; }
 }
