@@ -3,10 +3,10 @@
 Build project with [Maven](http://maven.apache.org)
 ```mvn clean package```.
 
-Then there will be a ```rest-x.x.x.jar``` file in the ```target``` directory.
+Then there will be a ```pictogo_rest_server-x.x.x.jar``` file in the ```target``` directory.
 
 ## Start Server
-```java -jar rest-x.x.x.jar```
+```java -jar pictogo_rest_server-x.x.x.jar```
 
 ## API Documentation
 Can be found in ```http://host:port/swagger-ui.html```, for example when running on [localhost](http://localhost:8080/swagger-ui.html).
