@@ -6,7 +6,7 @@
     <groupId>at.fhv.itm16.pictogo</groupId>
     <artifactId>pictogo_rest_server</artifactId>
     <name>PicToGoREST</name>
-    <version>3.0.0</version>
+    <version>3.0.1</version>
 
     <parent>
         <groupId>org.springframework.boot</groupId>

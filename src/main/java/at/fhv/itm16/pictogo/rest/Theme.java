@@ -28,4 +28,6 @@ public class Theme {
     public Date getEndDateOfTheme() { return endDateOfTheme; }
 
     public void setEndDateOfTheme(Date endDateOfTheme) { this.endDateOfTheme = endDateOfTheme; }
+
+    public long getId() { return id; }
 }

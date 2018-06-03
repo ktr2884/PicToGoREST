@@ -23,13 +23,12 @@ public class User {
 
     public void setUserName(String userName) { this.userName = userName; }
 
-    public int getCredits() { return credits; }
+    public long getId() { return id; }
 
-    public void setCredits(int credits) { this.credits = credits; }
 
-    public int getNumberOfTakenPictures() { return numberOfTakenPictures; }
+    public void setCredits(Integer credits) { this.credits = credits; }
 
-    public void setNumberOfTakenPictures(int numberOfTakenPictures) {
+    public void setNumberOfTakenPictures(Integer numberOfTakenPictures) {
         this.numberOfTakenPictures = numberOfTakenPictures;
     }
 }

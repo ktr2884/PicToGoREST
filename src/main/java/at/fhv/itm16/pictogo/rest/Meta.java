@@ -42,14 +42,6 @@ public class Meta {
         this.created = created;
     }
 
-    public boolean isActive() {
-        return isActive;
-    }
-
-    public void setActive(boolean active) {
-        isActive = active;
-    }
-
     public String getTag() {
         return tag;
     }
@@ -65,4 +57,10 @@ public class Meta {
     public void setImageURI(String imageURI) {
         this.imageURI = imageURI;
     }
+
+    public long getId() { return id; }
+
+    public Boolean getActive() { return isActive; }
+
+    public void setActive(Boolean active) { isActive = active; }
 }
